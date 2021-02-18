@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38425864-E84C-4A8D-B579-AE524E74596F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MattermostAddinConnect</RootNamespace>
+    <AssemblyName>Mattermost-Addin-Connect</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>5</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mattermost-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Outlook, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Outlook.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Cache\CompositeCache.cs" />
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Chat\IChatChannel.cs" />
+    <Compile Include="Chat\IChatPost.cs" />
+    <Compile Include="Chat\IClient.cs" />
+    <Compile Include="Chat\ISession.cs" />
+    <Compile Include="ContextMenu\MailItemContextMenuEntry.cs" />
+    <Compile Include="Error\IErrorDisplay.cs" />
+    <Compile Include="Error\MessageBoxErrorDisplay.cs" />
+    <Compile Include="Http\DefaultHttpResponse.cs" />
+    <Compile Include="Http\DotNetHttpClient.cs" />
+    <Compile Include="Http\ServiceException.cs" />
+    <Compile Include="Http\HttpWebRequestAdaptor.cs" />
+    <Compile Include="Http\IHttpClient.cs" />
+    <Compile Include="Http\IHttpRequest.cs" />
+    <Compile Include="Http\IHttpResponse.cs" />
+    <Compile Include="Mattermost\MattermostClientFactory.cs" />
+    <Compile Include="Mattermost\v3\ChatChannelImpl.cs" />
+    <Compile Include="Chat\ChatException.cs" />
+    <Compile Include="Mattermost\v3\ChatFactoryImpl.cs" />
+    <Compile Include="Mattermost\v3\ChatPostImpl.cs" />
+    <Compile Include="Mattermost\v3\ClientImpl.cs" />
+    <Compile Include="Mattermost\v3\IChatChannelFactory.cs" />
+    <Compile Include="Mattermost\v3\IChatFactory.cs" />
+    <Compile Include="Mattermost\v3\IChatPostFactory.cs" />
+    <Compile Include="Mattermost\v3\Interface\InitialLoad.cs" />
+    <Compile Include="Mattermost\v3\Interface\Channel.cs" />
+    <Compile Include="Mattermost\v3\Interface\ChannelType.cs" />
+    <Compile Include="Mattermost\v3\Interface\Error.cs" />
+    <Compile Include="Mattermost\v3\Interface\IRestService.cs" />
+    <Compile Include="Mattermost\v3\Interface\Login.cs" />
+    <Compile Include="Mattermost\v3\Interface\MattermostException.cs" />
+    <Compile Include="Mattermost\v3\Interface\Post.cs" />
+    <Compile Include="Mattermost\v3\Interface\Thread.cs" />
+    <Compile Include="Mattermost\v3\Interface\User.cs" />
+    <Compile Include="Mattermost\v3\RestServiceImpl.cs" />
+    <Compile Include="Mattermost\v3\Interface\Team.cs" />
+    <Compile Include="Mattermost\v3\SessionImpl.cs" />
+    <Compile Include="Mattermost\v4\ChatChannel.cs" />
+    <Compile Include="Mattermost\v4\ChatFactory.cs" />
+    <Compile Include="Mattermost\v4\ChatPost.cs" />
+    <Compile Include="Mattermost\v4\Client.cs" />
+    <Compile Include="Mattermost\v4\IChatChannelFactory.cs" />
+    <Compile Include="Mattermost\v4\IChatFactory.cs" />
+    <Compile Include="Mattermost\v4\IChatPostFactory.cs" />
+    <Compile Include="Mattermost\v4\Interface\Channel.cs" />
+    <Compile Include="Mattermost\v4\Interface\ChannelType.cs" />
+    <Compile Include="Mattermost\v4\Interface\Error.cs" />
+    <Compile Include="Mattermost\v4\Interface\IRestService.cs" />
+    <Compile Include="Mattermost\v4\Interface\Login.cs" />
+    <Compile Include="Mattermost\v4\Interface\MattermostException.cs" />
+    <Compile Include="Mattermost\v4\Interface\Post.cs" />
+    <Compile Include="Mattermost\v4\Interface\Team.cs" />
+    <Compile Include="Mattermost\v4\RestService.cs" />
+    <Compile Include="Mattermost\v4\SessionImpl.cs" />
+    <Compile Include="Security\InvalidCertificateDialogShell.cs" />
+    <Compile Include="Security\IServerCertificateValidator.cs" />
+    <Compile Include="Security\ITrustInvalidSslQuestion.cs" />
+    <Compile Include="Security\InvalidCertificateDialog.xaml.cs">
+      <DependentUpon>InvalidCertificateDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Security\StaticServicePointManager.cs" />
+    <Compile Include="Session\IClientFactory.cs" />
+    <Compile Include="Session\ISessionRepository.cs" />
+    <Compile Include="Mail\IExplorerService.cs" />
+    <Compile Include="Mail\IMailExplorer.cs" />
+    <Compile Include="Mail\MailException.cs" />
+    <Compile Include="Mail\OutlookMailExplorer.cs" />
+    <Compile Include="Session\SingleSignOnSessionRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reply\IStringProvider.cs" />
+    <Compile Include="Reply\PermalinkDialog.xaml.cs">
+      <DependentUpon>PermalinkDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reply\PermalinkDialogShell.cs" />
+    <Compile Include="Reply\PostIdFromPermalinkFilter.cs" />
+    <Compile Include="Security\IPasswordProvider.cs" />
+    <Compile Include="Security\PasswordDialog.xaml.cs">
+      <DependentUpon>PasswordDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Security\PasswordDialogShell.cs" />
+    <Compile Include="Settings\ChannelSetting.cs" />
+    <Compile Include="Settings\ChannelListSetting.cs" />
+    <Compile Include="Settings\ChannelTypeSetting.cs" />
+    <Compile Include="Settings\CloseCommand.cs" />
+    <Compile Include="Settings\EnumMatchToBooleanConverter.cs" />
+    <Compile Include="Settings\IClosableWindow.cs" />
+    <Compile Include="Settings\ISettingsLoadService.cs" />
+    <Compile Include="Settings\ISettingsSaveService.cs" />
+    <Compile Include="Settings\ISettingsUserInterface.cs" />
+    <Compile Include="Settings\MattermostVersion.cs" />
+    <Compile Include="Settings\SaveCommand.cs" />
+    <Compile Include="Settings\AddInSettings.cs" />
+    <Compile Include="Settings\SettingsViewModel.cs" />
+    <Compile Include="Settings\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\WpfSettingsUserInterface.cs" />
+    <Compile Include="Utils\UserAbortException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContextMenu\MailItemContextMenuEntry.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Reply\PermalinkDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Security\InvalidCertificateDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Security\PasswordDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings\SettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Security\Profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Security\NoEncryption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mattermost-icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
